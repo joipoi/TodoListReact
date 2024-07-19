@@ -1,0 +1,102 @@
+body{
+    background-color: #572c2c;
+}
+.appContainer {
+    display: flex; 
+    background-color: #572c2c;
+  }
+  
+#sideContDiv {
+    flex: 0 0 30%; 
+  }
+  
+#mainContDiv {
+    flex: 0 0 70%; 
+    background-color: #572c2c;
+  }
+  #mainContDiv a{
+    font-size: 30px;
+  }
+  .todoDiv {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #ca7272;
+  }
+  
+  .TodoName {
+    margin-right: 10px;
+    font-size:24px;
+  }
+  
+  .TodoTime {
+    font-size: 14px;
+  }
+  .todoList{
+    padding:0;
+    height: 310px; 
+    overflow-y: auto; 
+  }
+  
+  input[type="radio"] {
+    margin-right: 5px;
+  }
+  li{
+    list-style: none;
+  }
+
+  .moveUp,
+  .moveDown {
+    cursor: pointer;
+  }
+  label{
+    font-size: 27px;
+  }
+  #test{
+    font-size:24px;
+    cursor: pointer;
+  }
+  #inputDiv {
+    display: flex;
+    flex-direction: column;
+    width:500px;
+    padding:10px;
+    padding-top:10px;
+  }
+  
+  #inputDiv label {
+    margin-bottom: 5px;
+  }
+  
+  #inputDiv input[type="text"] {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  #inputDiv textarea {
+    height: 100px;
+    width: 300px;
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  #createItemDiv span{
+    font-size: 50px;
+    cursor: pointer;
+    position:relative;
+    left:350px;
+  }
+  #createItemDiv button{
+    cursor:pointer;
+    height:30px;
+    width:130px;
+  }
+  a{
+    text-decoration: none;
+    color:black;
+  }
+  .deleteItem{
+    padding-left: 15px;
+    cursor:pointer;
+  }
