@@ -25,6 +25,7 @@ function TodoItem(props) {
     <div className="todoDiv">
       <input type="checkbox" checked={props.item.isDone} onChange={handleToggle} />
       <p style={textStyle} className="TodoName">{props.item.name}</p>
+      <p className="TodoCategory">{props.item.category.value}</p>
       <TaskCountdown  task={props.item}/>
       <span className="moveUp" onClick={handleMoveUp}>⬆️</span>
       <span className="moveDown" onClick={handleMoveDown}>⬇️</span>
@@ -32,6 +33,4 @@ function TodoItem(props) {
     </div>
   );
 }
-
 export default TodoItem;
-//      

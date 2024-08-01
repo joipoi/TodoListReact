@@ -81,10 +81,10 @@ body{
     border: 1px solid #ccc;
     border-radius: 4px;
   }
-  #createItemDiv span{
-    font-size: 50px;
+  #createItemDiv #xIcon{
+    font-size: 50px; 
     cursor: pointer;
-    position:relative;
+    position:relative; 
     left:350px;
   }
   #createItemDiv button{
@@ -99,4 +99,32 @@ body{
   .deleteItem{
     padding-left: 15px;
     cursor:pointer;
+  }
+  .editItem{
+    cursor:pointer;
+    font-size: 25px;
+    padding-left: 15px;
+  }
+  .categoryList{
+    font-size: 30px;
+    font-weight:bold;
+    
+    
+  }
+  .categoryList li{
+    padding-bottom: 15px;
+    
+  }
+  .categoryList li p{
+    cursor:pointer;
+    
+  }
+
+  .categoryList li p::before {
+    content: "#";
+  }
+  .TodoCategory{
+    font-size: 15px;
+    color:#acbdb2;
+    padding: 0 10px;
   }

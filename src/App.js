@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CreateItem from './pages/CreateItem';
 import HomePage from './pages/HomePage';
+import Test from './pages/Test';
 import './styles.css';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/create" element={<CreateItem />} />
+          <Route path="/test" element={<Test />} />
         </Routes>
     </BrowserRouter>
   );

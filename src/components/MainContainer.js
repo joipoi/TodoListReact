@@ -1,14 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import TodoContent from './TodoContent';
 import { Link } from 'react-router-dom';
 
-//TODO There is a bug that treats invisble finished tasks as part of the list and messes with the moveup and movedown functions
-function MainContainer() {
+// TODO There is a bug that treats invisible finished tasks as part of the list and messes with the moveup and movedown functions
+function MainContainer({ selectedItemText }) {
   const [todoItems, setTodoItems] = useState([]);
+  const [showUnfinishedOnly, setShowUnfinishedOnly] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("All Categories");
 
-  const [showAllItems, setShowAllItems] = useState(false);
-
-  const unfinishedTodoItems = todoItems.filter((item) => !item.isDone);
+  const filteredItems = () => {
+    return todoItems.filter(item => 
+      (!showUnfinishedOnly || !item.isDone) && 
+      (selectedCategory === "All Categories" || item.category.value === selectedCategory)
+    );
+  };
 
   const toggleTodo = (id) => {
     setTodoItems((prevItems) => {
@@ -65,8 +70,8 @@ function MainContainer() {
     return savedTodoItems ? JSON.parse(savedTodoItems) : [];
   };
 
-  const handleShowAllItems = (event) => {
-    setShowAllItems(event.target.checked);
+  const handleShowUnfinishedOnly = (event) => {
+    setShowUnfinishedOnly(event.target.checked);
   };
 
   const deleteTodo = (id) => {
@@ -74,17 +79,23 @@ function MainContainer() {
     setTodoItems(updatedTodoItems);
   };
 
-  const filteredItems = showAllItems ? todoItems : unfinishedTodoItems;
+  const prevSelectedItemText = useRef(selectedItemText);
+
+  useEffect(() => {
+    if (prevSelectedItemText.current !== selectedItemText) {
+      setSelectedCategory(selectedItemText);
+      prevSelectedItemText.current = selectedItemText;
+    }
+  }, [selectedItemText]);
 
   return (
     <div id="mainContDiv">
-      <h1>Idag</h1>
-      <h2>Mina Projekt</h2>
-      <input type="checkbox" checked={showAllItems} onChange={handleShowAllItems} />
-      <label>Visa Strukna</label>
-      <hr></hr>
+      <h1>{selectedItemText || 'All Categories'}</h1>
+      <input type="checkbox" checked={showUnfinishedOnly} onChange={handleShowUnfinishedOnly} />
+      <label>Hide Finished</label>
+      <hr />
       <ul className="todoList">
-        {filteredItems.map((item) => (
+        {filteredItems().map((item) => (
           <TodoContent
             key={item.id}
             item={item}
